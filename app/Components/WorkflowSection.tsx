@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Container from "./Container";
 import InfiniteSlider from "./InfiniteSlider";
 import { workflowGalleries, ModelName } from "../lib/data";
+import TabButton from "./TabButton";
 
 const WorkflowSection = () => {
   const searchParams = useSearchParams();
@@ -32,19 +33,17 @@ const WorkflowSection = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {models.map((model) => (
-              <button
-                key={model}
-                onClick={() => setActiveModel(model)}
-                className={`px-6 py-2 border border-black text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 ${
-                  activeModel === model ? "bg-black text-white" : "bg-transparent text-black hover:bg-black/10"
-                }`}
-              >
-                {model}
-              </button>
-            ))}
-          </div>
+          <div className="flex flex-wrap gap-2 md:gap-4">
+  {models.map((model) => (
+    <TabButton
+      key={model}
+      onClick={() => setActiveModel(model)}
+      isActive={activeModel === model}
+    >
+      {model}
+    </TabButton>
+  ))}
+</div>
         </div>
 
         <InfiniteSlider 

@@ -1,4 +1,5 @@
 
+import GallerySection from "./Components/GallerySection";
 import Hero from "./Components/Hero";
 import ModelsSection from "./Components/ModelsSection";
 import ServicesSection from "./Components/ServicesSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <ServicesSection/>
       <WhyAiSection/>
       <WorkflowSection/>
+      <GallerySection/>
     </main>
   );
 }
