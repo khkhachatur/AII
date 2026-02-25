@@ -2,6 +2,8 @@
 import Hero from "./Components/Hero";
 import ModelsSection from "./Components/ModelsSection";
 import ServicesSection from "./Components/ServicesSection";
+import WhyAiSection from "./Components/WhyAiSection";
+import WorkflowSection from "./Components/WorkflowSection";
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
       <Hero/>
       <ModelsSection/>
       <ServicesSection/>
+      <WhyAiSection/>
+      <WorkflowSection/>
     </main>
   );
 }
