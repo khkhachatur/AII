@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
-const instrumentSans = Instrument_Sans({ 
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", ], 
-});
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AII - AI Influencers for Hire",
-  description: "Power your brand with custom digital talent.",
+  title: "AII - AI Influencer Agency",
+  description: "Hire digital talent or commission a custom AI ambassador designed for multi-platform dominance.",
 };
 
 export default function RootLayout({
@@ -18,10 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-
-      <body className={`${instrumentSans.className} antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-black text-white antialiased`}>
+        <Navbar />
         {children}
+        <Footer /> {/* 2. Add it here! */}
       </body>
     </html>
   );

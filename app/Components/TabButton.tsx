@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isActive?: boolean;
   children: React.ReactNode;
 }
 
-const Button = ({ children, className = '', ...props }: ButtonProps) => {
+const TabButton = ({ isActive = false, children, className = '', ...props }: TabButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const mouseX = useMotionValue(0);
@@ -20,25 +21,36 @@ const Button = ({ children, className = '', ...props }: ButtonProps) => {
 
   const clipPath = useMotionTemplate`circle(${springRadius}px at ${springX}px ${springY}px)`;
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!buttonRef.current) return;
-    const rect = buttonRef.current.getBoundingClientRect();
+  useEffect(() => {
+    if (isActive) {
+      if (buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        mouseX.set(rect.width / 2);
+        mouseY.set(rect.height / 2);
+      }
+      radius.set(300); 
+    } else {
+      radius.set(0);
+    }
+  }, [isActive, mouseX, mouseY, radius]);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!buttonRef.current || isActive) return; 
+    const rect = buttonRef.current.getBoundingClientRect();
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!buttonRef.current) return;
+    if (!buttonRef.current || isActive) return; 
     const rect = buttonRef.current.getBoundingClientRect();
-
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);
-
-    radius.set(45); 
+    radius.set(40); 
   };
 
   const handleMouseLeave = () => {
+    if (isActive) return;
     radius.set(0); 
   };
 
@@ -48,18 +60,18 @@ const Button = ({ children, className = '', ...props }: ButtonProps) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden px-8 py-3 border border-white pointer-events-auto flex items-center justify-center ${className}`}
+      className={`relative overflow-hidden px-4 py-2 md:px-6 md:py-2 border border-black pointer-events-auto flex items-center justify-center focus:outline-none ${className}`}
       {...props}
     >
-      <span className="text-white font-semibold text-xs tracking-[0.2em] uppercase z-10">
+      <span className="text-black font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase z-10">
         {children}
       </span>
 
       <motion.div
         style={{ clipPath }}
-        className="absolute inset-0 z-20 bg-white flex justify-center items-center pointer-events-none"
+        className="absolute inset-0 z-20 bg-black flex justify-center items-center pointer-events-none"
       >
-        <span className="text-black font-semibold text-xs tracking-[0.2em] uppercase">
+        <span className="text-white font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase">
           {children}
         </span>
       </motion.div>
@@ -67,4 +79,4 @@ const Button = ({ children, className = '', ...props }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default TabButton;
