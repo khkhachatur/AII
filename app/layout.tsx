@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-black text-white antialiased`}>
         <Navbar />
         {children}
-        <Footer /> {/* 2. Add it here! */}
+        <Footer /> 
       </body>
     </html>
   );
