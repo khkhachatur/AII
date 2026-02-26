@@ -1,10 +1,12 @@
 import { whyAiData } from "../lib/data";
 import Container from "./Container";
 import FeatureCard from "./FeatureCard";
+import SectionSpotlight from "./SectionSpotlight";
 
 
 const WhyAiSection = () => {
   return (
+      <SectionSpotlight>
     <section id="why-ai" className="w-full bg-black py-24 md:py-32 border-t border-white/10">
       <Container className="px-4 md:px-8">
 
@@ -28,6 +30,7 @@ const WhyAiSection = () => {
 
       </Container>
     </section>
+      </SectionSpotlight>
   );
 };
 

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Navbar from "./Navbar";
 import Button from "./Button";
 import Container from "./Container";
 
@@ -13,8 +12,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/20 pointer-events-none z-0"></div>
 
       <Container className="relative z-10 h-full flex flex-col items-center">
-
-            <Navbar />
 
             <div className="absolute top-[15vh] md:top-[18vh] w-full text-center z-40 px-4">
                 <p className="text-white text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase">

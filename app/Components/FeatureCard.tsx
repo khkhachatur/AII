@@ -8,15 +8,15 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ title, description, imagePath }: FeatureCardProps) => {
   return (
-    <div className="relative w-full aspect-[3/4] md:aspect-[4/5] group overflow-hidden bg-zinc-900 cursor-pointer">
-
+    <div className="relative w-full aspect-[3/4] md:aspect-[4/5] overflow-hidden bg-zinc-900 cursor-pointer z-[50] group">
+      
       <Image 
         src={imagePath} 
         alt={title} 
         fill
         quality={100} 
         unoptimized 
-        className="object-cover opacity-50 group-hover:opacity-90 transition-all duration-700 ease-out group-hover:scale-105"
+        className="hide-in-mask object-cover opacity-50 group-hover:opacity-90 transition-all duration-700 ease-out group-hover:scale-105"
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
