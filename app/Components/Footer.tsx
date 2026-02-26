@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Footer = () => {
   const socialIcons = [
-    "instagram", "tiktok", "x", "telegram", "facebook", "youtube", "google", "whatsapp"
+    "instagram", "tiktok", "x", "telegram", "facebook", "youtube", "gmail", "whatsapp"
   ];
 
   return (
@@ -24,10 +24,8 @@ const Footer = () => {
             <p className="text-white font-medium text-sm md:text-base leading-snug uppercase tracking-wide">
               JOIN FORWARD-THINKING COMPANIES SCALING THEIR REACH WITH DIGITAL TALENT.
             </p>
-            <a href="mailto:contact@aii-agency.com" className="w-fit">
-              <Button>
-                Book A Call
-              </Button>
+           <a href="mailto:contact@aii-agency.com" className="w-fit relative z-30">
+              <Button>Book A Call</Button>
             </a>
           </div>
         </div>
@@ -69,17 +67,17 @@ const Footer = () => {
             <span className="text-white font-bold text-sm md:text-base">See what's up</span>
             <div className="flex gap-4 items-center flex-wrap">
               {socialIcons.map((social) => (
-                <Link href="#" key={social} className="opacity-100 hover:opacity-60 transition-opacity">
-                  <div className="relative w-6 h-6 md:w-8 md:h-8">
-                    <Image
-                      src={`/icons/${social}.svg`}
-                      alt={`${social} icon`}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </Link>
-              ))}
+              <Link href="#" key={social} className="opacity-100 hover:opacity-60 transition-opacity">
+                <div className="relative w-6 h-6 md:w-8 md:h-8">
+                  <Image
+                    src={`/icons/${social}.svg`}
+                    alt={`${social} icon`}
+                    fill
+                    className="social-icon object-contain" 
+                  />
+                </div>
+              </Link>
+            ))}
             </div>
           </div>
 

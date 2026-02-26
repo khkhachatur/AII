@@ -17,7 +17,7 @@ const InfiniteSlider = ({
   const doubledImages = [...images, ...images];
 
   return (
-    <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-4">
+    <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-4 z-[50]">
       <div className="flex w-fit">
         <motion.div
           className="flex gap-4 md:gap-6 pr-4 md:pr-6"
@@ -42,7 +42,7 @@ const InfiniteSlider = ({
                 fill
                 quality={100}
                 unoptimized
-                className="object-cover"
+                className="hide-in-mask object-cover"
               />
             </div>
           ))}
